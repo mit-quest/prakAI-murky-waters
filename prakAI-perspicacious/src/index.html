@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+	 <link rel="stylesheet" href="index.css">
+	 <script src="./screenshot.js"></script>
+  </head>
+  <body>
+	 <h1>Screenshot Blurrer</h1>
+	 
+	 <input id="trigger" value="Fullscreen screenshot" type="button"/>
+	 <img height="400px" id="my-preview"/>
+	 <script>
+
+			callback = function (base64data) {
+							document.getElementById("my-preview").setAttribute("src", base64data);
+						};
+
+			setInterval(
+				function () {
+					fullscreenScreenshot(callback, 'image/png');
+				}, 
+				1000
+			);
+
+			document.getElementById("trigger").addEventListener(
+				"click", 
+				function () {
+					fullscreenScreenshot(callback, 'image/png');
+				},
+				false
+		);
+	 </script>
+  </body>
+</html>
